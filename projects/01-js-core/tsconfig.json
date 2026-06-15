@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    // --- what JS version to output and what libs exist ---
+    "target": "ES2022", // modern JS features in output
+    "module": "NodeNext", // Node-style import/export
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "ES2022"
+    ], // built-in APIs available (no DOM yet)
+    "types": [
+      "node"
+    ],
+    // --- where code goes ---
+    "rootDir": "src", // source lives here
+    "outDir": "dist", // compiled .js lands here
+    // --- STRICTNESS: this is the whole point. leave ON. ---
+    "strict": true, // turns on all strict checks at once
+    "noUncheckedIndexedAccess": true, // arr[i] is T | undefined, forces you to check
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    // --- quality of life ---
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true, // don't type-check node_modules
+    "sourceMap": true // debug .ts directly
+  },
+  "include": [
+    "src"
+  ]
+}
