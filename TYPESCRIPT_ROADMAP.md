@@ -16,6 +16,7 @@ Mark progress: `[ ]` todo · `[~]` in progress · `[x]` done.
 - Read compiler errors slowly — decoding them IS the skill.
 - Projects build on each other where possible. Reuse, don't throw away.
 - **Production-grade only. No shortcuts accepted.** Every solution must hold up as real, shippable code — proper types, validation, error handling, clear structure. If the user takes a shortcut (e.g. `any`, skipped edge case, hardcoded value, missing validation), Claude **must point it out explicitly** and **state why it matters** (what breaks, what bug it invites, what it teaches) — never let it slide silently. Learning the *reason* is the point, not just the fix.
+- **"Where does this value go?"** — for every expression written, ask where its result goes. If the answer is "nowhere" (computed then discarded, function with no `return`, `.map`/`filter` result ignored), it's a bug. Recurring trap caught 3x in Stage 1.
 
 ---
 
@@ -27,7 +28,7 @@ Topics: Node, npm/pnpm, `tsc`, `tsconfig.json`, VS Code, `tsx`/`ts-node`.
 Topics: `let`/`const`, primitives, functions, arrays, objects, loops, conditionals, template strings, truthiness, `==` vs `===`.
 - [x] **P1** Tip calculator (CLI input → math → output).
 - [x] **P2** Word counter — count words/chars/lines in text.
-- [ ] **P3** FizzBuzz + variants.
+- [x] **P3** FizzBuzz + variants.
 
 ## Stage 2 — JS that bites beginners (3-4 wk)
 Topics: closures, scope, `this`, callbacks, `map`/`filter`/`reduce`, spread/rest, destructuring, modules.
@@ -88,3 +89,4 @@ Topics: strict tsconfig flags, ESLint + typescript-eslint, Vitest, monorepo proj
 - 2026-06-15 — Stage 0 done. Setup in `projects/00-setup`. Learned: type annotations, inference, tsc vs tsx, compile-time errors. Note: `@types/node` v25 needs explicit `"types": ["node"]` in tsconfig (auto-include failed).
 - 2026-06-15 — P1 done (`projects/01-js-core/src/tip.ts`). Learned: `process.argv`, the `any` trap (require → no types; use global `process`), `Number()`/`Number.isNaN`, validate-before-compute, `console.error`, exit codes, `const` arrow fns not hoisted.
 - 2026-06-15 — P2 done (`projects/01-js-core/src/wordcount.ts`). Learned: string `.split`/`.trim`, the `/\s+/` vs `" "` split trap, `"".split` → `[""]` (length 1) empty trap, one-pure-function-per-metric structure, `[]` is truthy (validate with `.length`).
+- 2026-06-16 — P3 done (`projects/01-js-core/src/fizzbuzz.ts`). **Stage 1 complete.** Learned: `for` loops, `%`, pure per-item fn + thin driver, labeled tuple types `[divisor: number, word: string][]`, data-driven rules (filter→map→join, build-string-up beats divisible-by-15 special case), `String(n)` fallback. Recurring habit flagged: don't discard computed values — "where does this value go?". CLI args are strings — config belongs in code, not argv.
